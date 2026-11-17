@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TITA shop</title>
+<meta name="description" content="TITA shop — модний одяг, доступні ціни. Прямі ефіри зі знижками в TikTok, реквізити для оплати, умови доставки та повернення." />
+<meta name="theme-color" content="#f7e4e4" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-1: #fbefee;
+    --bg-2: #f6dede;
+    --bg-3: #fbe9e1;
+    --ink: #3a2a2e;
+    --ink-soft: #6f5a5f;
+    --muted: #8f7a7f;
+    --rose: #c9727e;
+    --rose-deep: #b25d6b;
+    --rose-soft: #f6dadd;
+    --card: rgba(255, 252, 251, 0.92);
+    --line: rgba(58, 42, 46, 0.09);
+    --plum: #3b2a30;
+    --live: #f0435f;
+    --shadow: 0 10px 30px -14px rgba(120, 60, 70, 0.28);
+    --radius: 22px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    min-height: 100vh;
+    font-family: "Manrope", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #fde9ea 0%, transparent 60%),
+      radial-gradient(900px 700px at 110% 40%, #f8dcd6 0%, transparent 55%),
+      linear-gradient(180deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+
+  .page {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 34px 16px 40px;
+  }
+
+  /* ---------- Header ---------- */
+  .hero { text-align: center; }
+
+  .logo {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: #fbf5f4;
+    border: 7px solid #fff;
+    box-shadow: 0 18px 40px -18px rgba(150, 70, 80, 0.45), inset 0 0 0 1px rgba(0,0,0,0.03);
+    display: grid;
+    place-items: center;
+  }
+  .logo::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 1px dashed rgba(201, 114, 126, 0.55);
+  }
+  .logo-inner { display: grid; justify-items: center; gap: 6px; }
+  .logo-text { font-size: 11px; letter-spacing: 0.22em; font-weight: 500; color: var(--ink); }
+  .logo svg { width: 70px; height: 34px; }
+
+  .brand {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 46px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .brand em { color: var(--rose); font-style: italic; }
+
+  .tagline { margin-top: 10px; color: var(--ink-soft); font-size: 15px; }
+
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 16px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: var(--plum);
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--live);
+    box-shadow: 0 0 0 0 rgba(240, 67, 95, 0.6);
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(240, 67, 95, 0.55); }
+    70% { box-shadow: 0 0 0 8px rgba(240, 67, 95, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(240, 67, 95, 0); }
+  }
+
+  /* ---------- Pay card ---------- */
+  .pay {
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    padding: 22px 20px 20px;
+    border-radius: 26px;
+    color: #fff;
+    background:
+      radial-gradient(420px 220px at 85% 0%, rgba(255,255,255,0.28), transparent 60%),
+      linear-gradient(160deg, #dd9aa3 0%, #c97580 50%, #b9636f 100%);
+    box-shadow: 0 22px 40px -20px rgba(160, 70, 85, 0.65);
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.22);
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+  }
+  .chip i { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+  .pay h2 {
+    margin-top: 12px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.05;
+  }
+  .pay h2 em { font-weight: 500; }
+  .pay p { margin-top: 6px; font-size: 14px; line-height: 1.45; opacity: 0.95; }
+
+  .methods {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .method {
+    height: 40px;
+    border-radius: 11px;
+    background: #fff;
+    display: grid; place-items: center;
+    color: #1a1a1a;
+  }
+  .visa { font-weight: 800; font-style: italic; font-size: 16px; color: #1a1f71; letter-spacing: 0.02em; }
+  .mc { display: flex; }
+  .mc span { width: 17px; height: 17px; border-radius: 50%; }
+  .mc span:first-child { background: #eb001b; }
+  .mc span:last-child { background: #f79e1b; margin-left: -7px; mix-blend-mode: multiply; }
+  .apay, .gpay { display: flex; align-items: center; gap: 2px; font-weight: 600; font-size: 14px; }
+  .apay svg { width: 13px; height: 15px; margin-top: -2px; }
+  .gpay { color: #5f6368; font-weight: 500; }
+  .gpay b { font-weight: 700; background: conic-gradient(from -45deg, #ea4335 0 25%, #4285f4 0 50%, #34a853 0 75%, #fbbc05 0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .cta {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border-radius: 14px;
+    background: var(--plum);
+    color: #fff;
+    font-weight: 700; font-size: 15px;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .cta:hover { background: #2c1f24; }
+  .cta:active { transform: scale(0.98); }
+  .cta svg { width: 16px; height: 16px; }
+
+  /* ---------- Sections ---------- */
+  .section-title {
+    display: flex; align-items: center; gap: 14px;
+    margin: 34px 4px 12px;
+    font-size: 11.5px; font-weight: 800; letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(58,42,46,0.12); }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.7);
+  }
+
+  /* links */
+  .links { display: grid; gap: 12px; }
+  .link {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 18px 12px 12px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .link:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(120, 60, 70, 0.35); }
+  .link-ico {
+    flex: none;
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: grid; place-items: center;
+    color: #fff;
+  }
+  .link-ico svg { width: 24px; height: 24px; }
+  .tg { background: linear-gradient(160deg, #3ab6f0, #2398d6); }
+  .vb { background: linear-gradient(160deg, #8b6cf2, #6b4bd8); }
+  .tt { background: #111; }
+  .ig { background: radial-gradient(circle at 30% 110%, #fdd36b 0%, #f7744a 35%, #e0306c 60%, #b03ab5 85%); }
+  .link-body { flex: 1; min-width: 0; }
+  .link-title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15.5px; }
+  .link-sub { margin-top: 2px; font-size: 13.5px; color: var(--ink-soft); }
+  .badge-live {
+    padding: 2px 8px; border-radius: 999px;
+    background: var(--live); color: #fff;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em;
+  }
+  .arrow { flex: none; width: 15px; height: 15px; color: var(--rose); }
+
+  /* promo */
+  .promo {
+    position: relative; overflow: hidden;
+    margin-top: 28px;
+    padding: 24px 22px;
+    border-radius: var(--radius);
+    text-align: center;
+    color: #fff;
+    background:
+      radial-gradient(260px 160px at 100% 0%, rgba(201,114,126,0.55), transparent 70%),
+      linear-gradient(135deg, #3b2a30, #4a3238);
+    box-shadow: 0 20px 40px -22px rgba(59, 42, 48, 0.8);
+  }
+  .promo h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-weight: 500;
+    font-size: 27px; line-height: 1.1;
+  }
+  .promo p { margin-top: 8px; font-size: 14px; line-height: 1.45; opacity: 0.85; }
+
+  /* requisites */
+  .req { padding: 18px; }
+  .req-head { display: flex; align-items: center; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .soft-ico {
+    flex: none;
+    width: 42px; height: 42px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: var(--rose-soft);
+    color: var(--rose-deep);
+  }
+  .soft-ico svg { width: 21px; height: 21px; }
+  .req-name { font-weight: 700; font-size: 15.5px; }
+  .req-bank { margin-top: 2px; font-size: 13px; color: var(--muted); }
+  .req-row { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .req-label { font-size: 13px; color: var(--ink-soft); }
+  .req-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; }
+  .req-value {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-weight: 700; font-size: 14px;
+    letter-spacing: 0.02em;
+    word-break: break-word;
+  }
+  .copy {
+    flex: none;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: var(--plum); color: #fff;
+    font-size: 13px; font-weight: 700;
+    transition: background .2s ease, transform .1s ease;
+  }
+  .copy:active { transform: scale(0.96); }
+  .copy.done { background: #4f9a6f; }
+  .copy-all {
+    width: 100%;
+    margin-top: 16px;
+    padding: 15px;
+    border-radius: 14px;
+    background: var(--rose-soft);
+    font-weight: 700; font-size: 15px;
+    transition: background .2s ease;
+  }
+  .copy-all:hover { background: #f1cdd1; }
+  .copy-all.done { background: #d8eedf; }
+
+  /* accordion */
+  .acc details + details { border-top: 1px solid var(--line); }
+  .acc summary {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px;
+    list-style: none;
+    cursor: pointer;
+    font-weight: 700; font-size: 16px;
+  }
+  .acc summary::-webkit-details-marker { display: none; }
+  .acc summary .grow { flex: 1; }
+  .toggle {
+    flex: none;
+    width: 26px; height: 26px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--rose-soft); color: var(--rose-deep);
+    transition: transform .25s ease;
+  }
+  .toggle svg { width: 12px; height: 12px; }
+  details[open] .toggle { transform: rotate(45deg); }
+  .acc-body { padding: 0 18px 18px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+  .acc-body strong { color: var(--ink); font-weight: 700; }
+
+  .bullets { list-style: none; display: grid; gap: 8px; }
+  .bullets li { position: relative; padding-left: 18px; }
+  .bullets li::before {
+    content: ""; position: absolute; left: 2px; top: 0.6em;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--rose);
+  }
+
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .fact { padding: 12px; border-radius: 14px; background: #fcf3f2; border: 1px solid var(--line); }
+  .fact small { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .fact b { display: block; margin-top: 4px; font-size: 15px; color: var(--ink); }
+
+  .checks { display: grid; gap: 8px; margin-top: 10px; }
+  .check {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #fcf3f2;
+    color: var(--ink); font-weight: 600;
+  }
+  .check svg { flex: none; width: 18px; height: 18px; color: #4f9a6f; }
+
+  .note {
+    display: flex; gap: 10px;
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 13.5px; line-height: 1.45;
+  }
+  .note svg { flex: none; width: 18px; height: 18px; margin-top: 1px; }
+  .note.warn { background: #fff4e5; color: #7a4b12; }
+  .note.warn svg { color: #d98a1f; }
+  .note.stop { background: #fdeaea; color: #7d2a33; }
+  .note.stop svg { color: #d4485a; }
+  .note.ok { background: #e9f5ee; color: #24583a; }
+  .note.ok svg { color: #4f9a6f; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag { padding: 5px 10px; border-radius: 999px; background: #fff; border: 1px solid rgba(212,72,90,0.25); font-size: 12.5px; font-weight: 600; color: #7d2a33; }
+
+  .sub-h { margin: 16px 0 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .sub-h:first-child { margin-top: 0; }
+
+  .wish {
+    margin-top: 22px;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--rose-deep);
+  }
+
+  footer {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer em { font-family: "Cormorant Garamond", serif; font-size: 15px; }
+  footer .heart { color: var(--rose); }
+
+  /* toast */
+  .toast {
+    position: fixed; left: 50%; bottom: 24px;
+    transform: translate(-50%, 30px);
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: var(--plum); color: #fff;
+    font-size: 14px; font-weight: 600;
+    box-shadow: var(--shadow);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <!-- ===== Header ===== -->
+  <header class="hero">
+    <div class="logo" aria-hidden="true">
+      <div class="logo-inner">
+        <span class="logo-text">TITA_SHOP</span>
+        <svg viewBox="0 0 70 34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M31 7a4 4 0 1 1 6 3.4c-1.3.8-2 1.6-2 3V15" />
+          <path d="M35 15 3 30h64L35 15Z" />
+        </svg>
+      </div>
+    </div>
+    <h1 class="brand">TITA <em>shop</em></h1>
+    <p class="tagline">Модний одяг, доступні ціни</p>
+    <a class="live-pill" href="#" data-link="tiktok"><span class="dot"></span>Прямі ефіри зі знижками в TikTok</a>
+  </header>
+
+  <!-- ===== Instant pay ===== -->
+  <section class="pay">
+    <span class="chip"><i></i>ПІД ЧАС ЕФІРУ</span>
+    <h2>Миттєва <em>оплата</em></h2>
+    <p>Оплачуйте одразу на LIVE-трансляції — карткою або в один дотик</p>
+    <div class="methods" aria-label="Способи оплати">
+      <div class="method"><span class="visa">VISA</span></div>
+      <div class="method"><span class="mc"><span></span><span></span></span></div>
+      <div class="method"><span class="apay"><svg viewBox="0 0 14 17" fill="currentColor"><path d="M11.6 9c0-2 1.7-3 1.8-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.7 0-1.7-.8-2.8-.7C3 4.4 1.7 5.2 1 6.5c-1.5 2.6-.4 6.4 1 8.5.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.6 1.1 0 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4 0 0-2-.8-2-3.6ZM9.6 3c.6-.7 1-1.7.9-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.9 2.5.9.1 1.8-.4 2.4-1.1Z"/></svg>Pay</span></div>
+      <div class="method"><span class="gpay"><b>G</b>Pay</span></div>
+    </div>
+    <a class="cta" href="#" data-link="payment">Перейти до оплати
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </section>
+
+  <!-- ===== Quick links ===== -->
+  <h2 class="section-title">Швидкі кнопки</h2>
+  <nav class="links">
+    <a class="card link" href="#" data-link="telegram" target="_blank" rel="noopener">
+      <span class="link-ico tg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.3 18.4 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L6.6 13 2 11.6c-1-.3-1-1 .2-1.5L20.2 3.2c.8-.3 1.6.2 1.3 1.1Z"/></svg></span>
+      <span class="link-body">
+        <span class="link-title">Менеджер у Telegram</span>
+        <span class="link-sub">Підберемо розмір і оформимо замовлення</span>
+      </span>
+      <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11 11 5M6 5h5v5"/></svg>
+    </a>
+
+    <a class="card link" href="#" data-link="viber" target="_blank" rel="noopener">
+      <span class="link-ico vb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8c5.3 0 8.6 2.4 8.6 8 0 5.3-3.3 7.8-8.6 7.8-.8 0-1.6 0-2.3-.2L6.3 21v-3.4C4 16.3 3.4 14 3.4 10.8c0-5.6 3.3-8 8.6-8Z"/><path d="M9.3 7.6c.4-.3.9-.2 1.1.2l.7 1.2c.2.4.1.8-.2 1.1l-.4.3c.4 1 1.2 1.9 2.2 2.4l.4-.4c.3-.3.7-.3 1.1-.1l1.2.7c.4.2.5.8.2 1.1-.6.8-1.6 1.1-2.5.7-2.2-.9-3.8-2.6-4.6-4.8-.3-.9 0-1.9.8-2.4Z"/><path d="M13 6.6c1.9.2 3.3 1.6 3.5 3.5"/></svg></span>
+      <span class="link-body">
+        <span class="link-title">Менеджер у Viber</span>
+        <span class="link-sub">Швидка відповідь у месенджері</span>
+      </span>
+      <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11 11 5M6 5h5v5"/></svg>
+    </a>
+
+    <a class="card link" href="#" data-link="tiktok" target="_blank" rel="noopener">
+      <span class="link-ico tt"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2-2.8V9a6.3 6.3 0 1 0 5.3 6.2V8.6a7.6 7.6 0 0 0 4.4 1.4V6.7a4.4 4.4 0 0 1-4.4-4.4V2Z"/></svg></span>
+      <span class="link-body">
+        <span class="link-title">TikTok <span class="badge-live">LIVE</span></span>
+        <span class="link-sub">Прямі ефіри зі знижками</span>
+      </span>
+      <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11 11 5M6 5h5v5"/></svg>
+    </a>
+
+    <a class="card link" href="#" data-link="instagram" target="_blank" rel="noopener">
+      <span class="link-ico ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
+      <span class="link-body">
+        <span class="link-title">Instagram</span>
+        <span class="link-sub">Нові образи, відгуки та правила</span>
+      </span>
+      <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11 11 5M6 5h5v5"/></svg>
+    </a>
+  </nav>
+
+  <!-- ===== Promo ===== -->
+  <section class="promo">
+    <h3>Розіграші та акції щомісяця</h3>
+    <p>Стежте за ефірами та сторіз, щоб не пропустити подарунки й знижки</p>
+  </section>
+
+  <!-- ===== Requisites ===== -->
+  <h2 class="section-title">Реквізити для оплати</h2>
+  <section class="card req">
+    <div class="req-head">
+      <span class="soft-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5M4.5 10v8M9 10v8M15 10v8M19.5 10v8M3 20h18"/></svg></span>
+      <div>
+        <div class="req-name">ФОП Тітаренко Яна Григорівна</div>
+        <div class="req-bank">АТ «А-БАНК»</div>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-label">Рахунок отримувача (IBAN)</div>
+      <div class="req-line">
+        <span class="req-value" id="iban">UA93 3077 7000 0002 6008 0112 3114 3</span>
+        <button class="copy" type="button" data-copy="iban">Копіювати</button>
+      </div>
+    </div>
+    <div class="req-row">
+      <div class="req-label">ЄДРПОУ</div>
+      <div class="req-line">
+        <span class="req-value" id="edrpou">3445415406</span>
+        <button class="copy" type="button" data-copy="edrpou">Копіювати</button>
+      </div>
+    </div>
+    <div class="req-row" style="border-bottom:0;padding-bottom:0">
+      <div class="req-label">Призначення платежу — обов'язково</div>
+      <div class="req-line">
+        <span class="req-value" id="purpose">замовлення одягу</span>
+        <button class="copy" type="button" data-copy="purpose">Копіювати</button>
+      </div>
+    </div>
+    <button class="copy-all" type="button" id="copyAll">Скопіювати всі реквізити</button>
+  </section>
+
+  <!-- ===== Terms ===== -->
+  <h2 class="section-title">Умови оплати та доставки</h2>
+  <section class="card acc">
+
+    <details open>
+      <summary>
+        <span class="soft-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h3"/></svg></span>
+        <span class="grow">Варіанти оплати</span>
+        <span class="toggle"><svg viewBox="0 0 12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 1.5v9M1.5 6h9"/></svg></span>
+      </summary>
+      <div class="acc-body">
+        <ul class="bullets">
+          <li><strong>100% оплата</strong> на рахунок</li>
+          <li><strong>Передоплата 300 грн</strong> + накладений платіж</li>
+          <li><strong>Скрін оплати та дані для відправки</strong> надішліть будь-якому нашому менеджеру</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="soft-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3v3h-7"/><circle cx="6.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></svg></span>
+        <span class="grow">Доставка</span>
+        <span class="toggle"><svg viewBox="0 0 12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 1.5v9M1.5 6h9"/></svg></span>
+      </summary>
+      <div class="acc-body">
+        <div class="facts">
+          <div class="fact"><small>Перевізник</small><b>Нова пошта</b></div>
+          <div class="fact"><small>Відправка</small><b>1–3 робочі дні</b></div>
+        </div>
+        <p style="margin-top:12px">Доставляємо по всій Україні — у відділення, поштомат або кур'єром.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="soft-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.3-4.3M8.5 11l1.8 1.8L13.8 9.3"/></svg></span>
+        <span class="grow">Перевірка при отриманні</span>
+        <span class="toggle"><svg viewBox="0 0 12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 1.5v9M1.5 6h9"/></svg></span>
+      </summary>
+      <div class="acc-body">
+        <p>Огляньте замовлення прямо у відділенні і переконайтесь, що:</p>
+        <div class="checks">
+          <div class="check"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10 2.3 2.3L13.5 7.7"/></svg>немає браку</div>
+          <div class="check"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10 2.3 2.3L13.5 7.7"/></svg>комплектація повна</div>
+          <div class="check"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10 2.3 2.3L13.5 7.7"/></svg>розмір підходить</div>
+        </div>
+        <div class="note warn">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 10 3l7 6v8H3z"/><path d="M8 17v-4h4v4"/></svg>
+          <span>Якщо посилку забрали з пошти додому — товар вважається проданим і поверненню не підлягає.</span>
+        </div>
+        <div class="note stop">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v5M10 14h.01"/></svg>
+          <span>Замовлення, отримані через <strong>поштомат</strong>, не підлягають обміну чи поверненню.</span>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="soft-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></svg></span>
+        <span class="grow">Обмін і повернення</span>
+        <span class="toggle"><svg viewBox="0 0 12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 1.5v9M1.5 6h9"/></svg></span>
+      </summary>
+      <div class="acc-body">
+        <div class="note ok" style="margin-top:0">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10l-2.5-2.5M16 13H6l2.5 2.5"/></svg>
+          <span><strong>Не підійшло?</strong> Скористайтеся безкоштовною послугою Нової пошти «Легке повернення».</span>
+        </div>
+        <div class="note ok">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5 16.5 5v4.5c0 4-2.8 6.9-6.5 8-3.7-1.1-6.5-4-6.5-8V5z"/><path d="m7.3 10 1.9 1.9L13 8"/></svg>
+          <span><strong>Брак?</strong> Гарантуємо заміну товару або повне повернення коштів.</span>
+        </div>
+        <p class="sub-h" style="margin-top:16px">Не підлягають обміну та поверненню</p>
+        <div class="tags">
+          <span class="tag">білизна</span>
+          <span class="tag">сумки</span>
+          <span class="tag">окуляри</span>
+          <span class="tag">аксесуари</span>
+          <span class="tag">прикраси</span>
+          <span class="tag">акційні товари</span>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <p class="wish">Бажаємо вдалих покупок!</p>
+
+  <footer><em>TITA shop</em> · модний одяг з любов'ю <span class="heart">♥</span></footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Скопійовано</div>
+
+<script>
+  // Посилання — вставте свої адреси сюди
+  const LINKS = {
+    payment: "/api/create-payment",
+    telegram: "https://t.me/",
+    viber: "viber://chat?number=%2B380",
+    tiktok: "https://www.tiktok.com/@ti_ta.shop",
+    instagram: "https://www.instagram.com/tita_shop.ua/",
+  };
+
+  document.querySelectorAll("[data-link]").forEach((a) => {
+    const url = LINKS[a.dataset.link];
+    if (url) a.href = url;
+  });
+
+  // А-Банк: сума задається лише на сервері.
+  const paymentLink = document.querySelector('[data-link="payment"]');
+  if (paymentLink) paymentLink.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const original = paymentLink.innerHTML;
+    paymentLink.setAttribute("aria-busy", "true");
+    paymentLink.style.pointerEvents = "none";
+    paymentLink.textContent = "Створюємо рахунок...";
+    try {
+      const response = await fetch("/api/create-payment", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok || !data.invoice_url || !data.invoice_id) throw new Error(data.error || "Не вдалося створити рахунок");
+      sessionStorage.setItem("tita_invoice_id", String(data.invoice_id));
+      window.location.href = data.invoice_url;
+    } catch (error) {
+      alert(error.message || "Помилка створення платежу. Спробуйте ще раз.");
+      paymentLink.innerHTML = original;
+      paymentLink.removeAttribute("aria-busy");
+      paymentLink.style.pointerEvents = "";
+    }
+  });
+
+  const toast = document.getElementById("toast");
+  let toastTimer;
+  const showToast = (text) => {
+    toast.textContent = text;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+  };
+
+  const copyText = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+    }
+  };
+
+  const flash = (btn, doneText) => {
+    const original = btn.textContent;
+    btn.textContent = doneText;
+    btn.classList.add("done");
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove("done");
+    }, 1500);
+  };
+
+  const value = (id) => document.getElementById(id).textContent.trim();
+
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const id = btn.dataset.copy;
+      // IBAN копіюємо без пробілів — так його приймають банківські застосунки
+      const text = id === "iban" ? value(id).replace(/\s+/g, "") : value(id);
+      await copyText(text);
+      flash(btn, "Готово ✓");
+      showToast("Скопійовано");
+    });
+  });
+
+  document.getElementById("copyAll").addEventListener("click", async (e) => {
+    const text = [
+      "Отримувач: ФОП Тітаренко Яна Григорівна",
+      `IBAN: ${value("iban").replace(/\s+/g, "")}`,
+      `ЄДРПОУ: ${value("edrpou")}`,
+      `Призначення платежу: ${value("purpose")}`,
+    ].join("\n");
+    await copyText(text);
+    flash(e.currentTarget, "Усі реквізити скопійовано ✓");
+    showToast("Реквізити скопійовано");
+  });
+</script>
+</body>
+</html>
